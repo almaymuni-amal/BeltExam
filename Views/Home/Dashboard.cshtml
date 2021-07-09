@@ -1,0 +1,68 @@
+@model List<Activityy>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex">
+        <div>
+            <h1>Dojo Activity Center</h1>
+        </div>
+        <div>
+            <p style="display: inline;"> Welcome, @ViewBag.User.name!</p>
+            <a href="/logout">Log Out</a>
+        </div>
+    </div>
+    <p style="width: 100%; border-bottom: black solid thin;"></p>
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Activity</th>
+                <th>Date And Time</th>
+                <th>Duration</th>
+                <th>Event Cordinator</th>
+                <th>No. of Participants</th>
+                <th>Action</th>
+            <tbody>
+                @{
+                    foreach(Activityy act in Model)
+                    {
+                        @* black belt *@
+                        @if(act.ActDate >= DateTime.Now){
+                            <tr>
+                            <td><a href="/activity/@act.ActivityId">@act.Title</a></td>
+                            <td>@act.ActDate.ToString("MM/dd") at @act.Time</td>
+                            <td>@act.ActDuration  @act.durationUnit</td>
+                            <td>@act.PlanedBy.name</td>
+                            <td>@act.participants.Count</td>
+                            <td>
+                                @if(@act.PlanedBy.UserId==@ViewBag.User.UserId)
+                                {
+                                <a asp-action="Delete" asp-route-actId="@act.ActivityId" asp-controller="Home">Delete</a>
+                                }
+                                else if(@act.participants.Any(p =>p.UserId == @ViewBag.User.UserId))
+                                {
+                                    <a asp-action="Leave" asp-route-actId="@act.ActivityId" asp-controller="Home">Leave
+                                    </a>
+                                }
+                                else{
+                                    @* not in participants list then Join *@
+                                    <a asp-action="Join" asp-route-actId="@act.ActivityId" asp-controller="Home">Join
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                        }
+                    }
+                }
+            </tbody>
+            </thead>
+        </table>
+        <a class="float-right" asp-action="newAct" asp-controller="Home">
+        <button class="btn btn-sm btn-primary">Add new Activity</button>
+    </a>
+</body>
+</html>

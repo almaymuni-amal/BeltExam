@@ -1,0 +1,21 @@
+@model LoginUser
+    <form asp-action="Login" asp-controller="Home" method="POST">
+    <fieldset>
+        <legend>Login</legend>
+        <div>
+            <span asp-validation-for="LoginEmail"></span>
+            <div class="flex-btw">
+                <label asp-for="LoginEmail"></label>
+                <input asp-for="LoginEmail" />
+            </div>
+        </div>
+        <div>
+            <span asp-validation-for="LoginPassword"></span>
+            <div class="flex-btw">
+                <label asp-for="LoginPassword"></label>
+                <input asp-for="LoginPassword" />
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </fieldset>
+</form>

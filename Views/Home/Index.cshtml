@@ -1,0 +1,54 @@
+﻿@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="margin-bottom: 30px;">Welcome to the Dojo Activity Center</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Register" asp-controller="Home" method="POST">
+                <fieldset>
+                    <legend>Register</legend>
+                    <div>
+                        <span asp-validation-for="name"></span>
+                        <div class="flex-btw">
+                            <label asp-for="name" ></label>
+                            <input asp-for="name" />
+                        </div>
+                    </div>
+                    <div>
+                        <span asp-validation-for="Email"></span>
+                        <div class="flex-btw">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" />
+                        </div>
+                    </div>
+                    <div>
+                        <span asp-validation-for="Password"></span>
+                        <div class="flex-btw">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" />
+                        </div>
+                    </div>
+                    <div>
+                        <span asp-validation-for="Confirm"></span>
+                        <div class="flex-btw">
+                            <label asp-for="Confirm"></label>
+                            <input asp-for="Confirm" />
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <partial name="_LoginForm"/>
+        </div>
+    </div>
+</body>
+</html>

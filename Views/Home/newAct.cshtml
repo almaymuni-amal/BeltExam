@@ -1,0 +1,60 @@
+@model Activityy
+<!DOCTYPE html>
+<html lang="en">
+    
+<body>
+    <div class="flex">
+        <div>
+            <h1>Dojo Activity Center</h1>
+        </div>
+        <div>
+            <a href="/Home">Home</a> |
+            <a href="/logout">LogOut</a>
+        </div>
+    </div>
+    <p style="width: 100%; border-bottom: black solid thin;"></p>
+    <form asp-action="ProcessAct" asp-controller="Home" method="POST">
+        <div class="flex" style="width: 690px;">
+            <div >
+                <label  asp-for="Title" ></label>
+                <input style=" margin-left: 50px; width: 150px;" asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div>
+                <label asp-for="Time" ></label>
+                <input style="width: 370px;" asp-for="Time" />
+                <span asp-validation-for="Time"></span>
+            </div>
+        </div>
+        
+        <div class="flex" style="width: 690px;">
+            <div>
+                <label asp-for="ActDate" ></label>
+                <input style="margin-left: 50px; width: 150px;" asp-for="ActDate" />
+                <span asp-validation-for="ActDate"></span>
+            </div>
+            <div>
+                <label asp-for="ActDuration" ></label>
+                <input style="width: 150px;" asp-for="ActDuration" />
+                <span asp-validation-for="ActDuration"></span>
+            </div>
+            <div >
+                <label asp-for="durationUnit"></label>
+                <span asp-validation-for="durationUnit"></span>
+                <select style="width: 150px;" asp-for="durationUnit">
+                    <option selected disabled>---</option>
+                    <option value="Hours">Hours</option>
+                    <option value="Minutes">Minutes</option>
+                    <option value="Days">Days</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label asp-for="Description" ></label>
+            <textarea style=" margin-bottom: 30px; vertical-align: top;" asp-for="Description" cols="30" rows="5"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        <button class="btn btn-info" style="margin-left: 80px;" type="submit">Create Activity</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\mooly\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\mooly\\.nuget\\packages"
+    ]
+  }
+}
